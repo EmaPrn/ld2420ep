@@ -15,7 +15,7 @@ namespace esphome
       LOG_SENSOR("  ", "Distance", this->distance_sensor_);
       for (size_t x = 0; x < 16; x++)
       {
-        LOG_SENSOR("  ", "Energy " + char(x)), this->energy_sensors_[x]);
+        LOG_SENSOR("  ", "Energy " + char(x), this->energy_sensors_[x]);
       }
     }
 
