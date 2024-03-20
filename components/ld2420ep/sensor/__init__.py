@@ -19,6 +19,7 @@ CONFIG_SCHEMA = cv.Schema(
                     device_class=DEVICE_CLASS_ENERGY, unit_of_measurement=UNIT_EMPTY
             ),        
     }
+)
 
 
 async def to_code(config):
