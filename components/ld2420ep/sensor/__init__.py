@@ -18,17 +18,13 @@ CONFIG_SCHEMA = cv.All(
             ),
         }
     ),
-)
-
-CONFIG_SCHEMA = cv.All(
     cv.COMPONENT_SCHEMA.extend(
         {
-            cv.Optional(f"gate_{x}_energy"): sensor.sensor_schema(
+            cv.Optional(f"gate_0_energy"): sensor.sensor_schema(
                     device_class=DEVICE_CLASS_ENERGY, unit_of_measurement=UNIT_EMPTY
             ),
         }
-    )
-    for x in range(16)
+    ),
 )
 
 
