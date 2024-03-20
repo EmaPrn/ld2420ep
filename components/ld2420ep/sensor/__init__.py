@@ -14,10 +14,16 @@ CONFIG_SCHEMA = cv.Schema(
             cv.GenerateID(CONF_LD2420EP_ID): cv.use_id(LD2420EPComponent),
             cv.Optional(CONF_MOVING_DISTANCE): sensor.sensor_schema(
                 device_class=DEVICE_CLASS_DISTANCE, unit_of_measurement=UNIT_CENTIMETER
-            ),
-            cv.Optional(f"gate_0_energy"): sensor.sensor_schema(
-                    device_class=DEVICE_CLASS_ENERGY, unit_of_measurement=UNIT_EMPTY
-            ),        
+            ),       
+    }
+)
+
+CONFIG_SCHEMA = CONFIG_SCHEMA.extend(
+    {
+        cv.Optional(f"gate_{x}_energy"): sensor.sensor_schema(
+                device_class=DEVICE_CLASS_ENERGY, unit_of_measurement=UNIT_EMPTY
+        )   
+        for x in range(16)
     }
 )
 
