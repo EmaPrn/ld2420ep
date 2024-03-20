@@ -16,16 +16,19 @@ CONFIG_SCHEMA = cv.All(
             cv.Optional(CONF_MOVING_DISTANCE): sensor.sensor_schema(
                 device_class=DEVICE_CLASS_DISTANCE, unit_of_measurement=UNIT_CENTIMETER
             ),
-            cv.Optional(f"gate_{x}_energy"): (
-                sensor.sensor_schema(
-                    device_class=DEVICE_CLASS_ENERGY, 
-                    unit_of_measurement=UNIT_EMPTY
-                ),
-            ) 
-            for x in range(16)
         }
     ),
+    cv.COMPONENT_SCHEMA.extend(
+        {
+            cv.Optional(f"gate_{x}_energy"): sensor.sensor_schema(
+                    device_class=DEVICE_CLASS_ENERGY, unit_of_measurement=UNIT_EMPTY
+            ),
+        }
+    )
+    for x in range(16)
 )
+
+
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
