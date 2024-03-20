@@ -13,7 +13,10 @@ namespace esphome
     {
       ESP_LOGCONFIG(TAG, "LD2420EP Sensor:");
       LOG_SENSOR("  ", "Distance", this->distance_sensor_);
-      LOG_SENSOR("  ", "Energy", this->energy_sensors_);
+      for (size_t x = 0; x < 16; x++)
+      {
+        LOG_SENSOR("  ", "Energy ".apend(x.str()), this->energy_sensors_[x]);
+      }
     }
 
   } // namespace ld2420ep
