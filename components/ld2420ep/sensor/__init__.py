@@ -18,6 +18,9 @@ CONFIG_SCHEMA = cv.All(
             ),
         }
     ),
+)
+
+CONFIG_SCHEMA = cv.All(
     cv.COMPONENT_SCHEMA.extend(
         {
             cv.Optional(f"gate_{x}_energy"): sensor.sensor_schema(
