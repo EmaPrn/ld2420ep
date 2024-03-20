@@ -13,6 +13,7 @@ namespace esphome
     {
       ESP_LOGCONFIG(TAG, "LD2420EP Sensor:");
       LOG_SENSOR("  ", "Distance", this->distance_sensor_);
+      LOG_SENSOR("  ", "Energy", this->energy_sensors_);
     }
 
   } // namespace ld2420ep
