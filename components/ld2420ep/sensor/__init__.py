@@ -8,25 +8,17 @@ LD2420EPSensor = ld2420ep_ns.class_("LD2420EPSensor", sensor.Sensor, cg.Componen
 
 CONF_MOVING_DISTANCE = "moving_distance"
 
-CONFIG_SCHEMA = cv.All(
-    cv.COMPONENT_SCHEMA.extend(
-        {
+CONFIG_SCHEMA = cv.Schema(
+    {
             cv.GenerateID(): cv.declare_id(LD2420EPSensor),
             cv.GenerateID(CONF_LD2420EP_ID): cv.use_id(LD2420EPComponent),
             cv.Optional(CONF_MOVING_DISTANCE): sensor.sensor_schema(
                 device_class=DEVICE_CLASS_DISTANCE, unit_of_measurement=UNIT_CENTIMETER
             ),
-        }
-    ),
-    cv.COMPONENT_SCHEMA.extend(
-        {
             cv.Optional(f"gate_0_energy"): sensor.sensor_schema(
                     device_class=DEVICE_CLASS_ENERGY, unit_of_measurement=UNIT_EMPTY
-            ),
-        }
-    ),
-)
-
+            ),        
+    }
 
 
 async def to_code(config):
